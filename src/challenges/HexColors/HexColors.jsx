@@ -1,4 +1,27 @@
-import React, { useEffect, useState } from 'react';
+/*
+Build a game called Color Codes that displays a random color code HEX and asks the user to select which color it is.
+It should display 3 colored boxes, and the user should be able to click on one of them to select their answer.
+
+If the user selects the correct color, it should display a message saying "Correct!" and if they select the wrong color,
+it should display a message saying "Incorrect!". After each selection display a button to play again with the text
+"Play Again".
+When the user clicks the play again button, it should generate a new color code and new colored boxes,
+and they should be able to start the game again. To add styles, you can use the inline style property
+
+
+Criteria
+1. The colored boxes should be displayed below the color code, and should be 100px by 100px in size.
+2. The user should be able to click on one of the colored boxes to select their answer, ending the game.
+3. If the user selects the correct color, it should display a message saying "Correct!" and a button to play again.
+4. If the user selects the wrong color, it should display a message saying "Incorrect!" and a button to play again.
+5. When the user clicks the play again button "Play Again", it should generate a new color code and new colored boxes.
+6. The container for the colored boxes should have a "data-testid" of "color-container".
+7. The colored boxes should have a "data-testid" of "correct-color" if it is the correct color, and "incorrect-color" if it is not the correct color.
+
+Without the "data-testid" properties, your tests will fail.
+*/
+
+import React, { useState } from 'react';
 import './HexColors.css';
 
 const optionsCount = 3;
@@ -50,18 +73,25 @@ const generateColors = () => {
   return options;
 };
 
-const onColorBoxClick = (hexCode, isCorrect) => {
-  console.log(
-    `You selected ${hexCode} and it's ${isCorrect ? 'correct!' : 'incorrect'}`
-  );
-};
-
 export const HexColors = () => {
   const [colors, setColors] = useState(generateColors());
+  const [message, setMessage] = useState('');
 
   const correctColor = colors.find((c) => {
     return c.isCorrect;
   });
+
+  const onColorBoxClick = (hexCode, isCorrect) => {
+    console.log(
+      `You selected ${hexCode} and it's ${isCorrect ? 'correct!' : 'incorrect'}`
+    );
+    setMessage(isCorrect ? 'Correct!' : 'Incorrect!');
+  };
+
+  const onPlayAgain = () => {
+    setColors(generateColors());
+    setMessage('');
+  };
 
   return (
     <div
@@ -97,6 +127,8 @@ export const HexColors = () => {
         </div>
       */}
       </div>
+      {message && <p>{message}</p>}
+      {message && <button onClick={onPlayAgain}>Play Again</button>}
     </div>
   );
 };
