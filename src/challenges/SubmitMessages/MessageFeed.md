@@ -1,4 +1,4 @@
-# Submit messages
+# Submit messages - 🟢 Easy
 
 You’re presented with a component called MessageFeed. This component has already been designed. Your task is to write the necessary logic to make it work as expected.
 

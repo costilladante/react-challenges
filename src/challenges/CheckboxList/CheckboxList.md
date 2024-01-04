@@ -1,4 +1,4 @@
-# Select all checkboxes
+# Select all checkboxes - 🟢 Easy
 
 In this coding challenge your task is to finish the CheckboxList component. We have already styled it for you. Your task is to implement the functionality to both:
 
