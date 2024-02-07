@@ -6,8 +6,7 @@ import { SantaList } from './challenges/SantaList/SantaList.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
-    {/* <HexColors /> */}
-    <SantaList />
+    <HexColors />
+    {/* <SantaList /> */}
   </React.StrictMode>
 );
